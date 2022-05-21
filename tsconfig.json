@@ -1,6 +1,7 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		"module": "es2020",
 		"strict": true,
 		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": true,
@@ -10,5 +11,6 @@
 		"noImplicitThis": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true
-	}
+	},
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }
