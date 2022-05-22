@@ -18,7 +18,8 @@ const config = {
 				alias: {
 					$models: resolve('./src/models'),
 					$services: resolve('./src/services'),
-					$assets: resolve('./src/assets')
+					$assets: resolve('./src/assets'),
+					$components: resolve('./src/components')
 				}
 			}
 		}

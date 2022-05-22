@@ -14,7 +14,8 @@
 		"paths": {
 			"$models/*": ["src/models/*"],
 			"$services/*": ["src/services/*"],
-			"$assets/*": ["src/assets/*"]
+			"$assets/*": ["src/assets/*"],
+			"$components/*": ["src/components/*"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
