@@ -4,11 +4,25 @@
 	const weatherApiData = getRealtimeWeather();
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="container">
+	{#await weatherApiData then weather}
+		<h1>{weather.city}</h1>
+		<img src={weather.iconUrl} alt={`${weather.description} icon`} />
+		<span>{`${weather.description}`}</span>
+		<span>{`${weather.temperature} ºC`}</span>
+		<span>{`${weather.windSpeed} km/h`}</span>
+		<span>{`${weather.humidity} %`}</span>
+		<span>Is daytime: {weather.isDaytime}</span>
+	{/await}
+</div>
 
-{#await weatherApiData then weather}
-	<p>{weather.city}</p>
-{/await}
-
-<style></style>
+<style lang="postcss">
+	.container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+</style>

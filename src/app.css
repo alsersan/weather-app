@@ -9,3 +9,9 @@ html {
 	padding: 0;
 	box-sizing: inherit;
 }
+
+body {
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+}
