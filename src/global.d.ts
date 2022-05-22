@@ -1,3 +1,7 @@
 interface ImportMetaEnv {
-	VITE_WEATHERAPI_KEY: string;
+	readonly VITE_WEATHERAPI_KEY: string;
+}
+
+interface ImportMeta {
+	readonly env: ImportMetaEnv;
 }
