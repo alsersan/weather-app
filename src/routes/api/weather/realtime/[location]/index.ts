@@ -1,15 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-
-interface RealtimeWeatherApi {
-	city: string;
-	region: string;
-	country: string;
-	localTime: string;
-	temperature: number;
-	feelsLike: number;
-	humidity: number;
-	weather: string;
-}
+import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
 
 type Params = { location: string };
 type OutputType = RealtimeWeatherApi;

@@ -10,7 +10,10 @@
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUncheckedIndexedAccess": true
+		"noUncheckedIndexedAccess": true,
+		"paths": {
+			"$models/*": ["src/models/*"]
+		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }
