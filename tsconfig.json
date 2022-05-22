@@ -12,7 +12,8 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
 		"paths": {
-			"$models/*": ["src/models/*"]
+			"$models/*": ["src/models/*"],
+			"$services/*": ["src/services/*"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]

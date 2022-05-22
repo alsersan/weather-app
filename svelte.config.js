@@ -7,13 +7,13 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: preprocess(),
-
 	kit: {
 		adapter: adapter(),
 		vite: {
 			resolve: {
 				alias: {
-					$models: resolve('./src/models')
+					$models: resolve('./src/models'),
+					$services: resolve('./src/services')
 				}
 			}
 		}
