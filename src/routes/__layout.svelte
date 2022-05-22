@@ -5,7 +5,10 @@
 
 <main>
 	<img class="iphone-image" src={image} alt="bla" />
-	<div class="content"><slot /></div>
+	<div class="content">
+		<div class="notch" />
+		<slot />
+	</div>
 </main>
 
 <style lang="postcss">
@@ -26,6 +29,12 @@
 			z-index: -1;
 			overflow: hidden;
 			border-radius: 20px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.notch {
+			height: 4.5%;
 		}
 	}
 </style>
