@@ -20,7 +20,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 		.then((res) => {
 			console.log(res);
 			const { location, current } = res;
-			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
+			const { condition, feelslike_c, humidity, temp_c, wind_kph, is_day } = current;
 			const { text, icon } = condition;
 			const { country, name, region, localtime } = location;
 			return {
@@ -28,12 +28,13 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				region,
 				country,
 				localTime: localtime,
-				weather: text,
+				description: text,
 				iconUrl: icon,
 				temperature: temp_c,
 				feelsLike: feelslike_c,
 				humidity,
-				windSpeed: wind_kph
+				windSpeed: wind_kph,
+				isDaytime: Boolean(is_day)
 			} as RealtimeWeatherApi;
 		});
 	return {
