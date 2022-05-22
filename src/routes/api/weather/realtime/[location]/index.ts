@@ -9,7 +9,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
-			'X-RapidAPI-Key': import.meta.env.VITE_WEATHERAPI_KEY
+			'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY
 		}
 	};
 	const response = await fetch(
@@ -18,8 +18,9 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 	)
 		.then((res) => res.json())
 		.then((res) => {
+			console.log(res);
 			const { location, current } = res;
-			const { condition, feelslike_c, humidity, temp_c } = current;
+			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
 			const { text } = condition;
 			const { country, name, region, localtime } = location;
 			return {
@@ -27,10 +28,11 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				region,
 				country,
 				localTime: localtime,
+				weather: text,
 				temperature: temp_c,
 				feelsLike: feelslike_c,
 				humidity,
-				weather: text
+				windSpeed: wind_kph
 			} as RealtimeWeatherApi;
 		});
 	return {
