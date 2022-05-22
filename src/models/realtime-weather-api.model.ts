@@ -3,8 +3,10 @@ export type RealtimeWeatherApi = {
 	region: string;
 	country: string;
 	localTime: string;
+	weather: string;
+	iconUrl: string;
 	temperature: number;
 	feelsLike: number;
 	humidity: number;
-	weather: string;
+	windSpeed: number;
 };

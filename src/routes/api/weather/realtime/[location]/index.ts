@@ -21,7 +21,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 			console.log(res);
 			const { location, current } = res;
 			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
-			const { text } = condition;
+			const { text, icon } = condition;
 			const { country, name, region, localtime } = location;
 			return {
 				city: name,
@@ -29,6 +29,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				country,
 				localTime: localtime,
 				weather: text,
+				iconUrl: icon,
 				temperature: temp_c,
 				feelsLike: feelslike_c,
 				humidity,
