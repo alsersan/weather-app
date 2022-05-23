@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { getRealtimeWeather } from '$services/get-weather.service';
+	import { Droplet } from 'lucide-svelte';
+	import { Wind } from 'lucide-svelte';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	const currentWeatherData = getRealtimeWeather();
@@ -9,11 +11,19 @@
 	<section class="current-weather">
 		{#await currentWeatherData then weather}
 			<h1>{weather.city}</h1>
-			<img class="weather-icon" src={sunCloud} alt={`${weather.description} icon`} />
-			<span>{`${weather.description}`}</span>
-			<span>{`${weather.temperature} ºC`}</span>
-			<span>{`${weather.windSpeed} km/h`}</span>
-			<span>{`${weather.humidity} %`}</span>
+			<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
+			<span class="current-weather__description">{`${weather.description}`}</span>
+			<span class="current-weather__temperature">{`${weather.temperature} ºC`}</span>
+			<div class="current-weather__icon-wrapper">
+				<div class="current-weather__icon-container">
+					<Wind size={16} />
+					<span>{`${weather.windSpeed} km/h`}</span>
+				</div>
+				<div class="current-weather__icon-container">
+					<Droplet size={16} />
+					<span>{`${weather.humidity} %`}</span>
+				</div>
+			</div>
 			<span>Is daytime: {weather.isDaytime}</span>
 		{/await}
 	</section>
@@ -26,21 +36,38 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+	}
+	.current-weather {
+		height: 60%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-		.current-weather {
-			height: 60%;
+		&__icon {
+			height: 150px;
+			filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.2));
+		}
+
+		&__temperature {
+			font-size: 50px;
+			font-weight: bold;
+		}
+
+		&__icon-wrapper {
 			display: flex;
-			flex-direction: column;
+			justify-content: space-between;
+			width: 40%;
+		}
+
+		&__icon-container {
+			display: flex;
 			align-items: center;
-
-			.weather-icon {
-				height: 150px;
-				filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.2));
-			}
+			gap: 5px;
+			font-size: 14px;
 		}
+	}
 
-		.weather-forecast {
-			height: 40%;
-		}
+	.weather-forecast {
+		height: 40%;
 	}
 </style>
