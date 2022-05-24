@@ -2,6 +2,7 @@
 	import { getRealtimeWeather } from '$services/get-weather.service';
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
+	import { SyncLoader } from 'svelte-loading-spinners';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	const currentWeatherData = getRealtimeWeather();
@@ -10,7 +11,9 @@
 <div class="weather-container">
 	<section class="current-weather">
 		{#await currentWeatherData}
-			<p>Loading...</p>
+			<div class="spinner">
+				<SyncLoader size="100" color="#FF3E00" unit="px" />
+			</div>
 		{:then weather}
 			<h1>{weather.city}</h1>
 			<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
@@ -40,6 +43,7 @@
 		flex-direction: column;
 	}
 	.current-weather {
+		position: relative;
 		height: 60%;
 		display: flex;
 		flex-direction: column;
@@ -69,6 +73,12 @@
 		}
 	}
 
+	.spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 	.weather-forecast {
 		height: 40%;
 	}
