@@ -23,6 +23,7 @@
 		"eslint": "^8.12.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"lucide-svelte": "^0.48.0",
 		"postcss": "^8.4.12",
 		"postcss-load-config": "^3.1.4",
 		"postcss-nested": "^5.0.6",
@@ -34,8 +35,5 @@
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
 	},
-	"type": "module",
-	"dependencies": {
-		"lucide-svelte": "^0.48.0"
-	}
+	"type": "module"
 }
