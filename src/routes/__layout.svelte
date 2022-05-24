@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
-	import image from '$assets/images/iphone12mini.png';
+	import phone from '$assets/images/iphone12mini.png';
 </script>
 
 <main>
-	<img class="iphone-image" src={image} alt="bla" />
+	<img class="iphone-image" src={phone} alt="Iphone 12 mini frame" />
 	<div class="background-layer" />
 	<div class="content">
 		<div class="notch" />

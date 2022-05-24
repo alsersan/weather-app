@@ -9,7 +9,9 @@
 
 <div class="weather-container">
 	<section class="current-weather">
-		{#await currentWeatherData then weather}
+		{#await currentWeatherData}
+			<p>Loading...</p>
+		{:then weather}
 			<h1>{weather.city}</h1>
 			<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
 			<span class="current-weather__description">{`${weather.description}`}</span>
