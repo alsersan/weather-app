@@ -1,37 +1,12 @@
 <script lang="ts">
 	import { getRealtimeWeather } from '$services/get-weather.service';
-	import { Droplet } from 'lucide-svelte';
-	import { Wind } from 'lucide-svelte';
-	import { SyncLoader } from 'svelte-loading-spinners';
-	import sunCloud from '$assets/icons/sun-cloud.webp';
+	import CurrentWeather from '$components/current-weather.svelte';
 
 	const currentWeatherData = getRealtimeWeather();
 </script>
 
 <div class="weather-container">
-	<section class="current-weather">
-		{#await currentWeatherData}
-			<div class="spinner">
-				<SyncLoader size="100" color="#FF3E00" unit="px" />
-			</div>
-		{:then weather}
-			<h1>{weather.city}</h1>
-			<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
-			<span class="current-weather__description">{`${weather.description}`}</span>
-			<span class="current-weather__temperature">{`${weather.temperature} ºC`}</span>
-			<div class="current-weather__icon-wrapper">
-				<div class="current-weather__icon-container">
-					<Wind size={16} />
-					<span>{`${weather.windSpeed} km/h`}</span>
-				</div>
-				<div class="current-weather__icon-container">
-					<Droplet size={16} />
-					<span>{`${weather.humidity} %`}</span>
-				</div>
-			</div>
-			<span>Is daytime: {weather.isDaytime}</span>
-		{/await}
-	</section>
+	<CurrentWeather sizePercentage="60%" data={currentWeatherData} />
 	<section class="weather-forecast" />
 </div>
 
@@ -42,43 +17,7 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.current-weather {
-		position: relative;
-		height: 60%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 
-		&__icon {
-			height: 150px;
-			filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.2));
-		}
-
-		&__temperature {
-			font-size: 50px;
-			font-weight: bold;
-		}
-
-		&__icon-wrapper {
-			display: flex;
-			justify-content: space-between;
-			width: 40%;
-		}
-
-		&__icon-container {
-			display: flex;
-			align-items: center;
-			gap: 5px;
-			font-size: 14px;
-		}
-	}
-
-	.spinner {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
 	.weather-forecast {
 		height: 40%;
 	}
