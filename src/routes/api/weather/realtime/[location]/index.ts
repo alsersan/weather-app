@@ -1,8 +1,8 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
+import type { WeatherData } from '$models/weather-data.model';
 
 type Params = { location: string };
-type OutputType = RealtimeWeatherApi;
+type OutputType = WeatherData;
 
 export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 	const options = {
@@ -35,7 +35,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				humidity,
 				windSpeed: wind_kph,
 				isDaytime: Boolean(is_day)
-			} as RealtimeWeatherApi;
+			} as WeatherData;
 		});
 	return {
 		status: 200,

@@ -1,4 +1,4 @@
-export type RealtimeWeatherApi = {
+export type WeatherData = {
 	city: string;
 	region: string;
 	country: string;

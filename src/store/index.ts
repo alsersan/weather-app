@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
-import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
+import type { WeatherData } from '$models/weather-data.model';
 
 export const currentWeather = writable(
-	new Promise<RealtimeWeatherApi>(() => {
+	new Promise<WeatherData>(() => {
 		//Promise that never resolves
 	})
 );

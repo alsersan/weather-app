@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
-	import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
+	import type { WeatherData } from '$models/weather-data.model';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	export let sizePercentage: string;
-	export let weather: RealtimeWeatherApi;
+	export let weather: WeatherData;
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
