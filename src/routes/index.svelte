@@ -1,13 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { getRealtimeWeather } from '$services/get-weather.service';
+	import { currentWeather } from '$store';
 	import CurrentWeather from '$components/current-weather.svelte';
 	import WeatherForecast from '$components/weather-forecast.svelte';
 
-	const currentWeatherData = getRealtimeWeather();
+	onMount(() => {
+		const currentWeatherData = getRealtimeWeather();
+		currentWeather.set(currentWeatherData);
+	});
 </script>
 
 <div class="weather-container">
-	<CurrentWeather sizePercentage="60%" data={currentWeatherData} />
+	<CurrentWeather sizePercentage="60%" />
 	<WeatherForecast sizePercentage="40%" />
 </div>
 

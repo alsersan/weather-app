@@ -2,11 +2,16 @@
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
 	import { SyncLoader } from 'svelte-loading-spinners';
+	import { currentWeather } from '$store';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 	import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
 
 	export let sizePercentage: string;
-	export let data: Promise<RealtimeWeatherApi>;
+	let data: Promise<RealtimeWeatherApi>;
+
+	currentWeather.subscribe((value) => {
+		data = value;
+	});
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
