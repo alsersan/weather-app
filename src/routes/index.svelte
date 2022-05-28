@@ -4,6 +4,7 @@
 	import { currentWeather } from '$store';
 	import CurrentWeather from '$components/current-weather.svelte';
 	import WeatherForecast from '$components/weather-forecast.svelte';
+	import Location from '$components/location.svelte';
 
 	onMount(() => {
 		const currentWeatherData = getRealtimeWeather();
@@ -12,8 +13,9 @@
 </script>
 
 <div class="weather-container">
-	<CurrentWeather sizePercentage="60%" />
-	<WeatherForecast sizePercentage="40%" />
+	<Location sizePercentage="10%" />
+	<CurrentWeather sizePercentage="55%" />
+	<WeatherForecast sizePercentage="35%" />
 </div>
 
 <style lang="postcss">
