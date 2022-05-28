@@ -1,8 +1,8 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import type { WeatherData } from '$models/weather-data.model';
+import type { WeatherData, ApiData } from '$models/weather-data.model';
 
 type Params = { location: string };
-type OutputType = WeatherData;
+type OutputType = ApiData;
 
 export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 	const options = {
@@ -13,29 +13,31 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 		}
 	};
 	const response = await fetch(
-		`https://weatherapi-com.p.rapidapi.com/current.json?q=${params.location}`,
+		`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${params.location}&days=3`,
 		options
 	)
 		.then((res) => res.json())
 		.then((res) => {
 			console.log(res);
-			const { location, current } = res;
+			const { location, current, forecast } = res;
 			const { condition, feelslike_c, humidity, temp_c, wind_kph, is_day } = current;
 			const { text, icon } = condition;
 			const { country, name, region, localtime } = location;
 			return {
-				city: name,
-				region,
-				country,
-				localTime: localtime,
-				description: text,
-				iconUrl: icon,
-				temperature: temp_c,
-				feelsLike: feelslike_c,
-				humidity,
-				windSpeed: wind_kph,
-				isDaytime: Boolean(is_day)
-			} as WeatherData;
+				current: {
+					city: name,
+					region,
+					country,
+					localTime: localtime,
+					description: text,
+					iconUrl: icon,
+					temperature: temp_c,
+					feelsLike: feelslike_c,
+					humidity,
+					windSpeed: wind_kph,
+					isDaytime: Boolean(is_day)
+				} as WeatherData
+			} as ApiData;
 		});
 	return {
 		status: 200,
