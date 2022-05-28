@@ -1,35 +1,29 @@
 <script lang="ts">
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
-	import { SyncLoader } from 'svelte-loading-spinners';
-	import { currentWeather } from '$store';
+	import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	export let sizePercentage: string;
+	export let weather: RealtimeWeatherApi;
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
-	{#await $currentWeather}
-		<div class="spinner">
-			<SyncLoader size="100" color="#FF3E00" unit="px" />
+	<h1>{weather.city}</h1>
+	<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
+	<span class="current-weather__description">{`${weather.description}`}</span>
+	<span class="current-weather__temperature">{`${weather.temperature} ºC`}</span>
+	<div class="current-weather__icon-wrapper">
+		<div class="current-weather__icon-container">
+			<Wind size={16} />
+			<span>{`${weather.windSpeed} km/h`}</span>
 		</div>
-	{:then weather}
-		<h1>{weather.city}</h1>
-		<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
-		<span class="current-weather__description">{`${weather.description}`}</span>
-		<span class="current-weather__temperature">{`${weather.temperature} ºC`}</span>
-		<div class="current-weather__icon-wrapper">
-			<div class="current-weather__icon-container">
-				<Wind size={16} />
-				<span>{`${weather.windSpeed} km/h`}</span>
-			</div>
-			<div class="current-weather__icon-container">
-				<Droplet size={16} />
-				<span>{`${weather.humidity} %`}</span>
-			</div>
+		<div class="current-weather__icon-container">
+			<Droplet size={16} />
+			<span>{`${weather.humidity} %`}</span>
 		</div>
-		<span>Is daytime: {weather.isDaytime}</span>
-	{/await}
+	</div>
+	<span>Is daytime: {weather.isDaytime}</span>
 </section>
 
 <style lang="postcss">
@@ -64,10 +58,10 @@
 		}
 	}
 
-	.spinner {
+	/* .spinner {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-	}
+	} */
 </style>
