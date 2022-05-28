@@ -4,18 +4,12 @@
 	import { SyncLoader } from 'svelte-loading-spinners';
 	import { currentWeather } from '$store';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
-	import type { RealtimeWeatherApi } from '$models/realtime-weather-api.model';
 
 	export let sizePercentage: string;
-	let data: Promise<RealtimeWeatherApi>;
-
-	currentWeather.subscribe((value) => {
-		data = value;
-	});
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
-	{#await data}
+	{#await $currentWeather}
 		<div class="spinner">
 			<SyncLoader size="100" color="#FF3E00" unit="px" />
 		</div>
