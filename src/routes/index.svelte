@@ -2,13 +2,13 @@
 	import { onMount } from 'svelte';
 	import { SyncLoader } from 'svelte-loading-spinners';
 	import { getRealtimeWeather } from '$services/get-weather.service';
-	import { currentWeather } from '$store';
+	import { currentWeather, location } from '$store';
 	import CurrentWeather from '$components/current-weather.svelte';
 	import WeatherForecast from '$components/weather-forecast.svelte';
 	import Location from '$components/location.svelte';
 
 	onMount(() => {
-		const currentWeatherData = getRealtimeWeather();
+		const currentWeatherData = getRealtimeWeather($location);
 		currentWeather.set(currentWeatherData);
 	});
 </script>

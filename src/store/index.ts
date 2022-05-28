@@ -6,3 +6,5 @@ export const currentWeather = writable(
 		//Promise that never resolves
 	})
 );
+
+export const location = writable('Madrid');

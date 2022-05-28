@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { MapPin, RefreshCw, ChevronDown } from 'lucide-svelte';
+	import { location } from '$store';
 
 	export let sizePercentage: string;
 </script>
@@ -7,7 +8,7 @@
 <section style="--sizePercentage: {sizePercentage}" class="location">
 	<div class="location__wrapper">
 		<MapPin size={25} />
-		<span class="location__text">Madrid</span>
+		<span class="location__text">{$location}</span>
 		<ChevronDown size={15} />
 	</div>
 
