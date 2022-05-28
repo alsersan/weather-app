@@ -1,5 +1,5 @@
-import type { WeatherData } from '$models/weather-data.model';
+import type { ApiData } from '$models/weather-data.model';
 
-export function getRealtimeWeather(location: string): Promise<WeatherData> {
+export function getWeather(location: string): Promise<ApiData> {
 	return fetch(`/api/weather/${location}`).then((data) => data.json());
 }

@@ -5,25 +5,25 @@
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	export let sizePercentage: string;
-	export let weather: WeatherData;
+	export let currentWeather: WeatherData;
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
-	<h1>{weather.city}</h1>
-	<img class="current-weather__icon" src={sunCloud} alt={`${weather.description} icon`} />
-	<span class="current-weather__description">{`${weather.description}`}</span>
-	<span class="current-weather__temperature">{`${weather.temperature} ºC`}</span>
+	<h1>{currentWeather.city}</h1>
+	<img class="current-weather__icon" src={sunCloud} alt={`${currentWeather.description} icon`} />
+	<span class="current-weather__description">{`${currentWeather.description}`}</span>
+	<span class="current-weather__temperature">{`${currentWeather.temperature} ºC`}</span>
 	<div class="current-weather__icon-wrapper">
 		<div class="current-weather__icon-container">
 			<Wind size={16} />
-			<span>{`${weather.windSpeed} km/h`}</span>
+			<span>{`${currentWeather.windSpeed} km/h`}</span>
 		</div>
 		<div class="current-weather__icon-container">
 			<Droplet size={16} />
-			<span>{`${weather.humidity} %`}</span>
+			<span>{`${currentWeather.humidity} %`}</span>
 		</div>
 	</div>
-	<span>Is daytime: {weather.isDaytime}</span>
+	<span>Is daytime: {currentWeather.isDaytime}</span>
 </section>
 
 <style lang="postcss">
@@ -57,11 +57,4 @@
 			font-size: 14px;
 		}
 	}
-
-	/* .spinner {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	} */
 </style>

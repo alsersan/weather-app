@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { MapPin, RefreshCw, ChevronDown } from 'lucide-svelte';
-	import { currentWeather, location } from '$store';
-	import { getRealtimeWeather } from '$services/get-weather.service';
+	import { weatherData, location } from '$store';
+	import { getWeather } from '$services/get-weather.service';
 	import type { WithTarget } from '$models/with-target.model';
 
 	export let sizePercentage: string;
 
 	const refreshWeather = (e: WithTarget<MouseEvent, HTMLSpanElement>) => {
-		const currentWeatherData = getRealtimeWeather($location);
-		currentWeather.set(currentWeatherData);
+		const data = getWeather($location);
+		weatherData.set(data);
 	};
 </script>
 
