@@ -15,7 +15,8 @@
 			"$models/*": ["src/models/*"],
 			"$services/*": ["src/services/*"],
 			"$assets/*": ["src/assets/*"],
-			"$components/*": ["src/components/*"]
+			"$components/*": ["src/components/*"],
+			"$store": ["src/store"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]

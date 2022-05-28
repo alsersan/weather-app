@@ -19,7 +19,8 @@ const config = {
 					$models: resolve('./src/models'),
 					$services: resolve('./src/services'),
 					$assets: resolve('./src/assets'),
-					$components: resolve('./src/components')
+					$components: resolve('./src/components'),
+					$store: resolve('./src/store')
 				}
 			}
 		}
