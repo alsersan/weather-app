@@ -1,8 +1,15 @@
 <script lang="ts">
 	import { MapPin, RefreshCw, ChevronDown } from 'lucide-svelte';
-	import { location } from '$store';
+	import { currentWeather, location } from '$store';
+	import { getRealtimeWeather } from '$services/get-weather.service';
+	import type { WithTarget } from '$models/with-target.model';
 
 	export let sizePercentage: string;
+
+	const refreshWeather = (e: WithTarget<MouseEvent, HTMLSpanElement>) => {
+		const currentWeatherData = getRealtimeWeather($location);
+		currentWeather.set(currentWeatherData);
+	};
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="location">
@@ -11,8 +18,9 @@
 		<span class="location__text">{$location}</span>
 		<ChevronDown size={15} />
 	</div>
-
-	<RefreshCw size={25} />
+	<span on:click={refreshWeather}>
+		<RefreshCw size={25} />
+	</span>
 </section>
 
 <style lang="postcss">
