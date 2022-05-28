@@ -1,3 +1,7 @@
+export type ApiData = {
+	current: WeatherData;
+};
+
 export type WeatherData = {
 	city: string;
 	region: string;
