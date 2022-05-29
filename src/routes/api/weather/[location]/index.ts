@@ -1,6 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import type {
 	ApiData,
+	CurrentWeather,
 	DayWeather,
 	HourWeather,
 	DayForecast,
@@ -27,9 +28,21 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 			const { location, current, forecast } = res;
 
 			// Current weather
-			const { condition, feelslike_c, humidity, temp_c, wind_kph, is_day } = current;
+			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
 			const { text, icon } = condition;
 			const { country, name, region, localtime } = location;
+			const currentWeather: CurrentWeather = {
+				city: name,
+				region,
+				country,
+				localTime: localtime,
+				description: text,
+				iconUrl: icon,
+				temperature: temp_c,
+				feelsLike: feelslike_c,
+				humidity,
+				windSpeed: wind_kph
+			};
 
 			//Weather forecast
 			const { forecastday } = forecast;
@@ -67,19 +80,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 
 			// Complete weather object
 			return {
-				current: {
-					city: name,
-					region,
-					country,
-					localTime: localtime,
-					description: text,
-					iconUrl: icon,
-					temperature: temp_c,
-					feelsLike: feelslike_c,
-					humidity,
-					windSpeed: wind_kph,
-					isDaytime: Boolean(is_day)
-				},
+				current: currentWeather,
 				forecast: weatherForecast
 			};
 		});

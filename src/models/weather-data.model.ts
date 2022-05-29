@@ -1,9 +1,9 @@
 export type ApiData = {
-	current: WeatherData;
+	current: CurrentWeather;
 	forecast: WeatherForecast;
 };
 
-export type WeatherData = {
+export type CurrentWeather = {
 	city: string;
 	region: string;
 	country: string;
@@ -14,7 +14,6 @@ export type WeatherData = {
 	feelsLike: number;
 	humidity: number;
 	windSpeed: number;
-	isDaytime: boolean;
 };
 
 export type WeatherForecast = DayForecast[];

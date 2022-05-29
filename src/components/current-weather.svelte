@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
-	import type { WeatherData } from '$models/weather-data.model';
+	import type { CurrentWeather } from '$models/weather-data.model';
 	import sunCloud from '$assets/icons/sun-cloud.webp';
 
 	export let sizePercentage: string;
-	export let currentWeather: WeatherData;
+	export let currentWeather: CurrentWeather;
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
@@ -23,7 +23,6 @@
 			<span>{`${currentWeather.humidity} %`}</span>
 		</div>
 	</div>
-	<span>Is daytime: {currentWeather.isDaytime}</span>
 </section>
 
 <style lang="postcss">
