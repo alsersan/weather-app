@@ -46,37 +46,50 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 
 			//Weather forecast
 			const { forecastday } = forecast;
-			const weatherForecast: WeatherForecast = forecastday.map((day: any): DayForecast => {
-				const { day: dayWeather, hour: hourWeather } = day;
-				const processedDayWeather: DayWeather = {
-					description: dayWeather.condition.text,
-					iconUrl: dayWeather.condition.icon,
-					code: dayWeather.condition.code,
-					maxTemperature: dayWeather.maxtemp_c,
-					minTemperature: dayWeather.mintemp_c,
-					averageTemperature: dayWeather.avgtemp_c,
-					chanceOfRain: dayWeather.daily_chance_of_rain,
-					chanceOfSnow: dayWeather.daily_chance_of_snow,
-					averageHumidity: dayWeather.avghumidity,
-					maxWindSpeed: dayWeather.maxwind_kph,
-					uvIndex: dayWeather.uv
-				};
-				const processedHourWeather: HourWeather[] = hourWeather.map(
-					(hour: any): HourWeather => ({
-						time: hour.time.split(' ')[1],
-						iconUrl: hour.condition.icon,
-						code: hour.condition.code,
-						temperature: hour.temp_c,
-						uvIndex: hour.uv,
-						chanceOfRain: hour.chance_of_rain
-					})
-				);
-				return {
-					date: day.date,
-					day: processedDayWeather,
-					hour: processedHourWeather
-				};
-			});
+			const weatherForecast: WeatherForecast = forecastday.map(
+				(day: any, index: number): DayForecast => {
+					const { day: dayWeather, hour: hourWeather } = day;
+					const date = new Date(day.date);
+					let formattedDate = date.toLocaleDateString('en-US', {
+						weekday: 'short',
+						day: '2-digit',
+						month: 'short'
+					});
+					if (index === 0) {
+						const temp = formattedDate.split(',');
+						formattedDate = 'Today,' + temp[1];
+					}
+					console.log(formattedDate);
+					const processedDayWeather: DayWeather = {
+						description: dayWeather.condition.text,
+						iconUrl: dayWeather.condition.icon,
+						code: dayWeather.condition.code,
+						maxTemperature: dayWeather.maxtemp_c,
+						minTemperature: dayWeather.mintemp_c,
+						averageTemperature: dayWeather.avgtemp_c,
+						chanceOfRain: dayWeather.daily_chance_of_rain,
+						chanceOfSnow: dayWeather.daily_chance_of_snow,
+						averageHumidity: dayWeather.avghumidity,
+						maxWindSpeed: dayWeather.maxwind_kph,
+						uvIndex: dayWeather.uv
+					};
+					const processedHourWeather: HourWeather[] = hourWeather.map(
+						(hour: any): HourWeather => ({
+							time: hour.time.split(' ')[1],
+							iconUrl: hour.condition.icon,
+							code: hour.condition.code,
+							temperature: hour.temp_c,
+							uvIndex: hour.uv,
+							chanceOfRain: hour.chance_of_rain
+						})
+					);
+					return {
+						date: formattedDate,
+						day: processedDayWeather,
+						hour: processedHourWeather
+					};
+				}
+			);
 
 			// Complete weather object
 			return {
