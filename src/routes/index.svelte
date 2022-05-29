@@ -31,7 +31,7 @@
 		{#if isWeatherLoaded}
 			<div class="weather-container" in:fade>
 				<CurrentWeather sizePercentage="60%" currentWeather={weather.current} />
-				<WeatherForecast sizePercentage="40%" />
+				<WeatherForecast sizePercentage="40%" weatherForecast={weather.forecast} />
 			</div>
 		{/if}
 	{/await}
