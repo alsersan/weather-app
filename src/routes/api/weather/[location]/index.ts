@@ -63,7 +63,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				};
 				const processedHourWeather: HourWeather[] = hourWeather.map(
 					(hour: any): HourWeather => ({
-						time: hour.time,
+						time: hour.time.split(' ')[1],
 						iconUrl: hour.condition.icon,
 						code: hour.condition.code,
 						temperature: hour.temperature,
