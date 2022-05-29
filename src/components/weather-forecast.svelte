@@ -3,20 +3,29 @@
 
 	export let sizePercentage: string;
 	export let weatherForecast: WeatherForecast;
+	let activeTab = 0;
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="weather-forecast">
-	<div class="date-container">
-		<span class="date-container__day">Today, 25 May</span>
-		<span class="date-container__day">Thr, 26 May</span>
-		<span class="date-container__day">Fri, 27 May</span>
-	</div>
+	<ul class="date-container">
+		{#each weatherForecast as day, index}
+			<li
+				class={`date-container__day ${
+					index === activeTab ? 'date-container__day--active' : 'date-container__day--inactive'
+				}`}
+				on:click={() => (activeTab = index)}
+			>
+				{day.date}
+			</li>
+		{/each}
+	</ul>
+
 	<ul class="forecast-container">
-		{#each weatherForecast[0].hour as day}
+		{#each weatherForecast[activeTab].hour as hour}
 			<li class="forecast-hour">
-				<span class="forecast-hour__time">{day.time}</span>
-				<img src={day.iconUrl} alt="icon" />
-				<span class="forecast-hour__temperature">{day.temperature} ºC</span>
+				<span class="forecast-hour__time">{hour.time}</span>
+				<img src={hour.iconUrl} alt="icon" />
+				<span class="forecast-hour__temperature">{hour.temperature} ºC</span>
 			</li>
 		{/each}
 	</ul>
@@ -25,7 +34,7 @@
 <style lang="postcss">
 	.weather-forecast {
 		height: var(--sizePercentage);
-		padding: 1rem;
+		padding: 0.8rem;
 	}
 
 	.date-container {
@@ -36,6 +45,15 @@
 			display: flex;
 			flex-grow: 1;
 			justify-content: center;
+			font-size: 15px;
+
+			&--active {
+				font-weight: bold;
+			}
+
+			&--inactive {
+				color: rgba(0, 0, 0, 0.3);
+			}
 		}
 	}
 
