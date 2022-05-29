@@ -66,7 +66,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 						time: hour.time.split(' ')[1],
 						iconUrl: hour.condition.icon,
 						code: hour.condition.code,
-						temperature: hour.temperature,
+						temperature: hour.temp_c,
 						uvIndex: hour.uv,
 						chanceOfRain: hour.chance_of_rain
 					})
