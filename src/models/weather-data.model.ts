@@ -10,6 +10,7 @@ export type CurrentWeather = {
 	localTime: string;
 	description: string;
 	iconUrl: string;
+	code: number;
 	temperature: number;
 	feelsLike: number;
 	humidity: number;

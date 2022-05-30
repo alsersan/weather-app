@@ -29,7 +29,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 
 			// Current weather
 			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
-			const { text, icon } = condition;
+			const { text, icon, code } = condition;
 			const { country, name, region, localtime } = location;
 			const currentWeather: CurrentWeather = {
 				city: name,
@@ -38,6 +38,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				localTime: localtime,
 				description: text,
 				iconUrl: icon,
+				code,
 				temperature: temp_c,
 				feelsLike: feelslike_c,
 				humidity,
