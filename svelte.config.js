@@ -20,7 +20,8 @@ const config = {
 					$services: resolve('./src/services'),
 					$assets: resolve('./src/assets'),
 					$components: resolve('./src/components'),
-					$store: resolve('./src/store')
+					$store: resolve('./src/store'),
+					$utils: resolve('./src/utils')
 				}
 			}
 		}
