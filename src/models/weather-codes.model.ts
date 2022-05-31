@@ -3,10 +3,53 @@ export type WeatherCodesMapping = {
 };
 
 type Mapping = {
-	day: string;
-	night: string;
+	day: DayImages;
+	night: NightImages;
 };
 
+// List of available images
+enum SunImages {
+	sun = 'sun',
+	sunBlizzard = 'sun-blizzard',
+	sunCloud = 'sun-cloud',
+	sunRain = 'sun-rain',
+	sunRainHeavy = 'sun-rain-heavy',
+	sunRainThunder = 'sun-rain-thunder',
+	sunSleet = 'sun-sleet',
+	sunSnow = 'sun-snow',
+	sunSnowThunder = 'sun-snow-thunder',
+	sunThunder = 'sun-thunder'
+}
+
+enum MoonImages {
+	moon = 'moon',
+	moonBlizzard = 'moon-blizzard',
+	moonCloud = 'moon-cloud',
+	moonRain = 'moon-rain',
+	moonRainHeavy = 'moon-rain-heavy',
+	moonRainThunder = 'moon-rain-thunder',
+	moonSleet = 'moon-sleet',
+	moonSnow = 'moon-snow',
+	moonSnowThunder = 'moon-snow-thunder',
+	moonThunder = 'moon-thunder'
+}
+
+enum CloudImages {
+	cloud = 'cloud',
+	cloudBlizzard = 'cloud-blizzard',
+	cloudRain = 'cloud-rain',
+	cloudRainHeavy = 'cloud-rain-heavy',
+	cloudRainThunder = 'cloud-rain-thunder',
+	cloudSleet = 'cloud-sleet',
+	cloudSnow = 'cloud-snow',
+	cloudSnowThunderHeavy = 'cloud-snow-thunder-heavy'
+}
+
+type DayImages = SunImages | CloudImages;
+type NightImages = MoonImages | CloudImages;
+export const weatherImages = { ...SunImages, ...MoonImages, ...CloudImages };
+
+// Possible weather codes provided by the api
 type WeatherCodes =
 	| 1000
 	| 1003
