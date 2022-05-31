@@ -2,15 +2,22 @@
 	import { Droplet } from 'lucide-svelte';
 	import { Wind } from 'lucide-svelte';
 	import type { CurrentWeather } from '$models/weather-data.model';
-	import sunCloud from '$assets/icons/sun-cloud.webp';
+	import { weatherCodesMapping } from '$utils/weather-codes-mapping';
 
 	export let sizePercentage: string;
 	export let currentWeather: CurrentWeather;
+	const imageName = weatherCodesMapping[currentWeather.code][currentWeather.dayOrNight];
+
+	console.log(imageName);
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
 	<h1>{currentWeather.city}</h1>
-	<img class="current-weather__icon" src={sunCloud} alt={`${currentWeather.description} icon`} />
+	<img
+		class="current-weather__icon"
+		src={`/images/${imageName}.webp`}
+		alt={`${currentWeather.description} icon`}
+	/>
 	<span class="current-weather__description">{`${currentWeather.description}`}</span>
 	<span class="current-weather__temperature">{`${currentWeather.temperature} ºC`}</span>
 	<div class="current-weather__icon-wrapper">

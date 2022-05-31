@@ -50,7 +50,7 @@ type NightImages = MoonImages | CloudImages;
 export const weatherImages = { ...SunImages, ...MoonImages, ...CloudImages };
 
 // Possible weather codes provided by the api
-type WeatherCodes =
+export type WeatherCodes =
 	| 1000
 	| 1003
 	| 1006

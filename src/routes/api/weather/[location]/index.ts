@@ -43,7 +43,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				feelsLike: feelslike_c,
 				humidity,
 				windSpeed: wind_kph,
-				dayOrNight: is_day
+				dayOrNight: is_day ? 'day' : 'night'
 			};
 
 			//Weather forecast
@@ -61,7 +61,6 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 						const temp = formattedDate.split(',');
 						formattedDate = 'Today,' + temp[1];
 					}
-					console.log(formattedDate);
 					const processedDayWeather: DayWeather = {
 						description: dayWeather.condition.text,
 						iconUrl: dayWeather.condition.icon,
@@ -83,7 +82,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 							temperature: hour.temp_c,
 							uvIndex: hour.uv,
 							chanceOfRain: hour.chance_of_rain,
-							dayOrNight: hour.is_day
+							dayOrNight: hour.is_day ? 'day' : 'night'
 						})
 					);
 					return {

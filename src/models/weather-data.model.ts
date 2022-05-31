@@ -1,3 +1,5 @@
+import type { WeatherCodes } from './weather-codes.model';
+
 export type ApiData = {
 	current: CurrentWeather;
 	forecast: WeatherForecast;
@@ -10,7 +12,7 @@ export type CurrentWeather = {
 	localTime: string;
 	description: string;
 	iconUrl: string;
-	code: number;
+	code: WeatherCodes;
 	temperature: number;
 	feelsLike: number;
 	humidity: number;
@@ -29,7 +31,7 @@ export type DayForecast = {
 export type DayWeather = {
 	description: string;
 	iconUrl: string;
-	code: number;
+	code: WeatherCodes;
 	maxTemperature: number;
 	minTemperature: number;
 	averageTemperature: number;
@@ -43,7 +45,7 @@ export type DayWeather = {
 export type HourWeather = {
 	time: string;
 	iconUrl: string;
-	code: number;
+	code: WeatherCodes;
 	temperature: number;
 	uvIndex: number;
 	chanceOfRain: number;
