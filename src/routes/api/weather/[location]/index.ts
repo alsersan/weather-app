@@ -28,7 +28,7 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 			const { location, current, forecast } = res;
 
 			// Current weather
-			const { condition, feelslike_c, humidity, temp_c, wind_kph } = current;
+			const { condition, feelslike_c, humidity, temp_c, wind_kph, is_day } = current;
 			const { text, icon, code } = condition;
 			const { country, name, region, localtime } = location;
 			const currentWeather: CurrentWeather = {
@@ -42,7 +42,8 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 				temperature: temp_c,
 				feelsLike: feelslike_c,
 				humidity,
-				windSpeed: wind_kph
+				windSpeed: wind_kph,
+				dayOrNight: is_day
 			};
 
 			//Weather forecast
@@ -81,7 +82,8 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 							code: hour.condition.code,
 							temperature: hour.temp_c,
 							uvIndex: hour.uv,
-							chanceOfRain: hour.chance_of_rain
+							chanceOfRain: hour.chance_of_rain,
+							dayOrNight: hour.is_day
 						})
 					);
 					return {

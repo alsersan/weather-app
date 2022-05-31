@@ -15,6 +15,7 @@ export type CurrentWeather = {
 	feelsLike: number;
 	humidity: number;
 	windSpeed: number;
+	dayOrNight: 'day' | 'night';
 };
 
 export type WeatherForecast = DayForecast[];
@@ -46,4 +47,5 @@ export type HourWeather = {
 	temperature: number;
 	uvIndex: number;
 	chanceOfRain: number;
+	dayOrNight: 'day' | 'night';
 };
