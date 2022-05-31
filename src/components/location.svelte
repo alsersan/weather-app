@@ -5,8 +5,16 @@
 	import type { WithTarget } from '$models/with-target.model';
 
 	export let sizePercentage: string;
+	let animate = false;
+	let timeout: ReturnType<typeof setTimeout>;
 
 	const refreshWeather = (e: WithTarget<MouseEvent, HTMLSpanElement>) => {
+		// Clean any previous timeout
+		if (animate) clearTimeout(timeout);
+
+		// Run the event
+		animate = true;
+		timeout = setTimeout(() => (animate = false), 500);
 		const data = getWeather($location);
 		weatherData.set(data);
 	};
@@ -18,7 +26,10 @@
 		<span class="location__text">{$location}</span>
 		<ChevronDown size={15} />
 	</div>
-	<span on:click={refreshWeather}>
+	<span
+		on:click={refreshWeather}
+		class={`location__refresh ${animate ? 'location__refresh--animate' : ''}`}
+	>
 		<RefreshCw size={25} />
 	</span>
 </section>
@@ -39,6 +50,24 @@
 
 		&__text {
 			font-weight: bold;
+		}
+
+		&__refresh {
+			height: 25px;
+
+			&--animate {
+				animation: spin 500ms linear infinite;
+			}
+		}
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
 		}
 	}
 </style>
