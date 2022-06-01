@@ -34,7 +34,7 @@
 <style lang="postcss">
 	.weather-forecast {
 		height: var(--sizePercentage);
-		padding: 0.8rem;
+		padding: 1rem;
 	}
 
 	.date-container {
@@ -45,7 +45,7 @@
 			display: flex;
 			flex-grow: 1;
 			justify-content: center;
-			font-size: 15px;
+			font-size: 1.5rem;
 
 			&--active {
 				font-weight: bold;
@@ -66,14 +66,14 @@
 	}
 
 	.forecast-hour {
-		height: 9rem;
-		min-width: 6rem;
+		height: 14rem;
+		min-width: 10rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
 		align-items: center;
-		border-radius: 10px;
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+		border-radius: 1rem;
+		box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 		background-color: rgba(255, 255, 255, 0.4);
 
 		&__time {

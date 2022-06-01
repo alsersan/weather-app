@@ -40,12 +40,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 20px;
+		padding: 0 2rem;
 
 		&__wrapper {
 			display: flex;
 			align-items: center;
-			gap: 10px;
+			gap: 1rem;
 		}
 
 		&__text {

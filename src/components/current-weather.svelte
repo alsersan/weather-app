@@ -3,12 +3,9 @@
 	import { Wind } from 'lucide-svelte';
 	import type { CurrentWeather } from '$models/weather-data.model';
 	import { weatherCodesMapping } from '$utils/weather-codes-mapping';
-
 	export let sizePercentage: string;
 	export let currentWeather: CurrentWeather;
 	const imageName = weatherCodesMapping[currentWeather.code][currentWeather.dayOrNight];
-
-	console.log(imageName);
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
@@ -41,12 +38,12 @@
 		align-items: center;
 
 		&__icon {
-			height: 150px;
-			filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.2));
+			height: 15rem;
+			filter: drop-shadow(1rem 1rem 2rem rgba(0, 0, 0, 0.2));
 		}
 
 		&__temperature {
-			font-size: 50px;
+			font-size: 5rem;
 			font-weight: bold;
 		}
 
@@ -59,8 +56,8 @@
 		&__icon-container {
 			display: flex;
 			align-items: center;
-			gap: 5px;
-			font-size: 14px;
+			gap: 0.5rem;
+			font-size: 1.4rem;
 		}
 	}
 </style>

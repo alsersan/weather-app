@@ -35,7 +35,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		border-radius: 45px;
+		border-radius: 4.5rem;
 		z-index: 1;
 		background-color: yellow;
 	}
