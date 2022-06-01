@@ -1,3 +1,5 @@
+export type Locations = Location[];
+
 export type Location = {
 	city: 'Madrid';
 	region: 'Madrid';

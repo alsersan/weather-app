@@ -1,8 +1,8 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import type { Location } from '$models/location.model';
+import type { Location, Locations } from '$models/location.model';
 
 type Params = { query: string };
-type OutputType = Location[];
+type OutputType = Locations;
 
 export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 	const options = {
@@ -17,8 +17,8 @@ export const get: RequestHandler<Params, OutputType> = async ({ params }) => {
 		options
 	)
 		.then((res) => res.json())
-		.then((res): Location[] => {
-			const locations: Location[] = res.map((location: any): Location => {
+		.then((res): Locations => {
+			const locations: Locations = res.map((location: any): Location => {
 				const { name, region, country, lat, lon } = location;
 				return {
 					city: name,
