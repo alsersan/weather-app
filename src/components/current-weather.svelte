@@ -9,7 +9,6 @@
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">
-	<h1>{currentWeather.city}</h1>
 	<img
 		class="current-weather__icon"
 		src={`/images/${imageName}.webp`}
@@ -36,10 +35,13 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		gap: 2rem;
 
 		&__icon {
 			height: 15rem;
 			filter: drop-shadow(1rem 1rem 2rem rgba(0, 0, 0, 0.2));
+			margin-bottom: 2rem;
 		}
 
 		&__temperature {
@@ -50,7 +52,7 @@
 		&__icon-wrapper {
 			display: flex;
 			justify-content: space-between;
-			width: 40%;
+			width: 45%;
 		}
 
 		&__icon-container {
