@@ -35,6 +35,10 @@
 	.weather-forecast {
 		height: var(--sizePercentage);
 		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2.5rem;
 	}
 
 	.date-container {
@@ -59,13 +63,12 @@
 
 	.forecast-container {
 		display: flex;
-		gap: 10px;
-		margin: 2rem 0;
-		padding: 1rem 0;
+		gap: 1rem;
 		overflow-x: auto;
 	}
 
 	.forecast-hour {
+		padding: 1rem;
 		height: 14rem;
 		min-width: 10rem;
 		display: flex;
