@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { getLocation } from '$services/get-weather.service';
+	import { getLocation } from '$services/get-location.service';
 	import { onMount } from 'svelte';
 	import { location } from '$store';
 	import type { Locations } from '$models/location.model';
