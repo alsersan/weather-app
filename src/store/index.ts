@@ -8,3 +8,5 @@ export const weatherData = writable(
 );
 
 export const location = writable('Madrid');
+
+export const backgroundColor = writable('dark-gray');

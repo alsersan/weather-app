@@ -2,11 +2,12 @@
 	import '../app.css';
 	import Notch from '$components/notch.svelte';
 	import phone from '$assets/images/iphone12mini.png';
+	import { backgroundColor } from '$store';
 </script>
 
-<main>
+<main class={`main ${$backgroundColor === 'dark-gray' ? 'main--white' : 'main--black'}`}>
 	<img class="iphone-image" src={phone} alt="Iphone 12 mini frame" />
-	<div class="background-layer" />
+	<div class={`background-layer background-layer--${$backgroundColor}`} />
 	<div class="content">
 		<Notch />
 		<slot />
@@ -14,10 +15,19 @@
 </main>
 
 <style lang="postcss">
-	main {
+	.main {
 		position: relative;
 		height: 845px;
 		width: 420px;
+		transition: color 500ms;
+
+		&--black {
+			color: black;
+		}
+
+		&--white {
+			color: white;
+		}
 	}
 
 	.iphone-image {
@@ -37,7 +47,17 @@
 		transform: translate(-50%, -50%);
 		border-radius: 4.5rem;
 		z-index: 1;
-		background-color: yellow;
+		transition: background-color 500ms;
+
+		&--dark-gray {
+			background-color: #232632;
+		}
+		&--red {
+			background-color: red;
+		}
+		&--blue {
+			background-color: red;
+		}
 	}
 
 	.content {

@@ -3,9 +3,11 @@
 	import { Wind } from 'lucide-svelte';
 	import type { CurrentWeather } from '$models/weather-data.model';
 	import { weatherCodesMapping } from '$utils/weather-codes-mapping';
+	import { backgroundColor } from '$store';
 	export let sizePercentage: string;
 	export let currentWeather: CurrentWeather;
 	const imageName = weatherCodesMapping[currentWeather.code][currentWeather.dayOrNight];
+	backgroundColor.set(weatherCodesMapping[currentWeather.code].backgroundColor);
 </script>
 
 <section style="--sizePercentage: {sizePercentage}" class="current-weather">

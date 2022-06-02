@@ -5,6 +5,7 @@ export type WeatherCodesMapping = {
 type Mapping = {
 	day: DayImages;
 	night: NightImages;
+	backgroundColor: string;
 };
 
 // List of available images
